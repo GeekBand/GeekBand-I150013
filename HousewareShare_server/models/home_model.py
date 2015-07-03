@@ -1,6 +1,6 @@
 #coding:utf-8
 
-form .. import db
+from models import db
 
 class ModelHome(db.Model):
 
