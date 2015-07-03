@@ -11,5 +11,5 @@
 
 @interface ApiManager (Login)
 
-- (void)LoginUser:(GBHSUserModel*)user withBlock:(ScuessBlock)block;
+- (void)doLoginWithUser:(GBHSUserModel*)loginuser withBlock:(ScuessBlock)block;
 @end

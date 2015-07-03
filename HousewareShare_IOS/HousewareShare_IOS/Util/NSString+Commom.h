@@ -12,4 +12,7 @@
 
 - (NSString *)md5String;
 - (NSString *)sha1String;
+
+- (BOOL)isValidMailAddress;
+- (BOOL)isValidPhoneNumber;
 @end

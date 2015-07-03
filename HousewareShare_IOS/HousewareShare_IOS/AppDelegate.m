@@ -6,9 +6,18 @@
 //  Copyright (c) 2015年 GBHS. All rights reserved.
 //
 
+#import <AFNetworkActivityIndicatorManager.h>
+#import <AFNetworkReachabilityManager.h>
 #import "AppDelegate.h"
 #import "ApiManager.h"
 #import "ApiManager+Login.h"
+#import "LoginManager.h"
+#import "GBHSLoginTableViewController.h"
+#import "GBHSRewardTableViewController.h"
+#import "GBHSHomeTableViewController.h"
+#import "GBHSHouseholdDutiesTableViewController.h"
+#import "macro.h"
+
 
 @interface AppDelegate ()
 
@@ -16,17 +25,51 @@
 
 @implementation AppDelegate
 
-- (BOOL)test
-{
-    NSLog(@"dddd");
-    return YES;
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [[ApiManager shareClient] LoginUser:nil withBlock:^(id data, NSError *error) {
-    }];
+
+    /**
+     *  网路情况监控
+     */
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    
+    
+    /**
+     *  主页面设置
+     */
+    self.window = [[UIWindow alloc] initWithFrame:kMainScreenBounds];
+    
+    // TODO:暂时用反向判定
+    self.window.rootViewController = ![LoginManager currentLoginUser] ? [self setUpMainController] : [[GBHSLoginTableViewController alloc] init];
+    [self.window makeKeyAndVisible];
+    
     return YES;
+}
+
+
+/**
+ *  创建主页面
+ *
+ *  @return 
+ */
+- (UITabBarController*)setUpMainController
+{
+    
+    UITabBarController *mainController = [[UITabBarController alloc] init];
+    UINavigationController * homeTab = [[UINavigationController alloc] initWithRootViewController:[[GBHSHomeTableViewController alloc] init]];
+    homeTab.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"家庭" image:[UIImage imageNamed:@"me_normal"] tag:1];
+    
+    UINavigationController * householdTab = [[UINavigationController alloc] initWithRootViewController:[[GBHSHouseholdDutiesTableViewController alloc] init]];
+    householdTab.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"家务" image:[UIImage imageNamed:@"me_normal"] tag:1];
+    
+    UINavigationController * rewardTab = [[UINavigationController alloc] initWithRootViewController:[[GBHSHomeTableViewController alloc] initWithStyle:UITableViewStyleGrouped]];
+    rewardTab.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"奖励" image:[UIImage imageNamed:@"me_normal"] tag:1];
+    
+    mainController.viewControllers = @[householdTab, homeTab, rewardTab];
+    
+    return mainController;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
