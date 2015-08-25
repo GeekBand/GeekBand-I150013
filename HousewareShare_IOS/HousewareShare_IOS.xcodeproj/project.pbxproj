@@ -15,6 +15,7 @@
 		3AACBDD91B3B90DA00839FD5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AACBDD81B3B90DA00839FD5 /* Images.xcassets */; };
 		3AACBDDC1B3B90DA00839FD5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AACBDDA1B3B90DA00839FD5 /* LaunchScreen.xib */; };
 		3AACBDE81B3B90DA00839FD5 /* HousewareShare_IOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AACBDE71B3B90DA00839FD5 /* HousewareShare_IOSTests.m */; };
+		3AD87F8F1B8CC8CF003E5B50 /* ApiManager+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD87F8E1B8CC8CF003E5B50 /* ApiManager+Login.m */; };
 		86C83545FB80EA9D5D858F7D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B6A612B5C1B513CEC71B2A /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,8 @@
 		3AACBDE11B3B90DA00839FD5 /* HousewareShare_IOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HousewareShare_IOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AACBDE61B3B90DA00839FD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AACBDE71B3B90DA00839FD5 /* HousewareShare_IOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HousewareShare_IOSTests.m; sourceTree = "<group>"; };
+		3AD87F8D1B8CC8CF003E5B50 /* ApiManager+Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ApiManager+Login.h"; path = "Managers/ApiManager+Login.h"; sourceTree = "<group>"; };
+		3AD87F8E1B8CC8CF003E5B50 /* ApiManager+Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ApiManager+Login.m"; path = "Managers/ApiManager+Login.m"; sourceTree = "<group>"; };
 		BBB8A312216D0DD7DA55ECF2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D9B6A612B5C1B513CEC71B2A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -190,6 +193,8 @@
 		3AACBDF41B3B923500839FD5 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				3AD87F8D1B8CC8CF003E5B50 /* ApiManager+Login.h */,
+				3AD87F8E1B8CC8CF003E5B50 /* ApiManager+Login.m */,
 				3A40528E1B8CA961006867DE /* ApiManager.h */,
 				3A40528F1B8CA961006867DE /* ApiManager.m */,
 			);
@@ -359,6 +364,7 @@
 				3AACBDD11B3B90DA00839FD5 /* AppDelegate.m in Sources */,
 				3A4052931B8CACEC006867DE /* GBHSUserModel.m in Sources */,
 				3AACBDCE1B3B90DA00839FD5 /* main.m in Sources */,
+				3AD87F8F1B8CC8CF003E5B50 /* ApiManager+Login.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
