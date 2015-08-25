@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3A4052901B8CA961006867DE /* ApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A40528F1B8CA961006867DE /* ApiManager.m */; };
 		3A4052931B8CACEC006867DE /* GBHSUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4052921B8CACEC006867DE /* GBHSUserModel.m */; };
+		3A4052961B8CB53E006867DE /* ApiManager+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4052951B8CB53E006867DE /* ApiManager+Login.m */; };
+		3A4052991B8CB95A006867DE /* GBHSResponseBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4052981B8CB95A006867DE /* GBHSResponseBaseModel.m */; };
 		3AACBDCE1B3B90DA00839FD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AACBDCD1B3B90DA00839FD5 /* main.m */; };
 		3AACBDD11B3B90DA00839FD5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AACBDD01B3B90DA00839FD5 /* AppDelegate.m */; };
 		3AACBDD71B3B90DA00839FD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AACBDD51B3B90DA00839FD5 /* Main.storyboard */; };
@@ -34,6 +36,10 @@
 		3A40528F1B8CA961006867DE /* ApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApiManager.m; path = Managers/ApiManager.m; sourceTree = "<group>"; };
 		3A4052911B8CACEC006867DE /* GBHSUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBHSUserModel.h; path = Models/Login/GBHSUserModel.h; sourceTree = "<group>"; };
 		3A4052921B8CACEC006867DE /* GBHSUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBHSUserModel.m; path = Models/Login/GBHSUserModel.m; sourceTree = "<group>"; };
+		3A4052941B8CB53E006867DE /* ApiManager+Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ApiManager+Login.h"; path = "Managers/ApiManager+Login.h"; sourceTree = "<group>"; };
+		3A4052951B8CB53E006867DE /* ApiManager+Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ApiManager+Login.m"; path = "Managers/ApiManager+Login.m"; sourceTree = "<group>"; };
+		3A4052971B8CB95A006867DE /* GBHSResponseBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBHSResponseBaseModel.h; path = Models/GBHSResponseBaseModel.h; sourceTree = "<group>"; };
+		3A4052981B8CB95A006867DE /* GBHSResponseBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBHSResponseBaseModel.m; path = Models/GBHSResponseBaseModel.m; sourceTree = "<group>"; };
 		3AACBDC81B3B90DA00839FD5 /* HousewareShare_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HousewareShare_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AACBDCC1B3B90DA00839FD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AACBDCD1B3B90DA00839FD5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -167,6 +173,8 @@
 			isa = PBXGroup;
 			children = (
 				3A96C6341B3BB57D007D81D2 /* Login */,
+				3A4052971B8CB95A006867DE /* GBHSResponseBaseModel.h */,
+				3A4052981B8CB95A006867DE /* GBHSResponseBaseModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -192,6 +200,8 @@
 			children = (
 				3A40528E1B8CA961006867DE /* ApiManager.h */,
 				3A40528F1B8CA961006867DE /* ApiManager.m */,
+				3A4052941B8CB53E006867DE /* ApiManager+Login.h */,
+				3A4052951B8CB53E006867DE /* ApiManager+Login.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -356,9 +366,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A4052901B8CA961006867DE /* ApiManager.m in Sources */,
+				3A4052991B8CB95A006867DE /* GBHSResponseBaseModel.m in Sources */,
 				3AACBDD11B3B90DA00839FD5 /* AppDelegate.m in Sources */,
 				3A4052931B8CACEC006867DE /* GBHSUserModel.m in Sources */,
 				3AACBDCE1B3B90DA00839FD5 /* main.m in Sources */,
+				3A4052961B8CB53E006867DE /* ApiManager+Login.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

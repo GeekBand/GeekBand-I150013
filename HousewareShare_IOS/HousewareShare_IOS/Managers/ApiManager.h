@@ -15,6 +15,7 @@ typedef NS_ENUM(NSUInteger, GBHSRequestMethod)
     GBHSRequestMethodDELETE
 };
 
+typedef void (^ScuessBlock)(id data, NSError *error);
 
 
 @interface ApiManager : NSObject
