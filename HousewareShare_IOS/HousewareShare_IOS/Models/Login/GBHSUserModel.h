@@ -21,7 +21,9 @@ typedef NS_ENUM(NSUInteger, GBHSUserGender)
 @property (nonatomic, strong) NSString * userLocalName;
 @property (nonatomic, strong) NSString * userPhoneNumber;
 @property (nonatomic, strong) NSString * userMail;
+@property (nonatomic, strong) NSString * userPassword;
 @property (nonatomic, assign) GBHSUserGender userGender;
 
 - (BOOL)isLogin;
+- (NSString*)primaryKey;
 @end

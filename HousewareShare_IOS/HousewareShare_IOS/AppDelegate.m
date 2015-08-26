@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "ApiManager.h"
+#import "ApiManager+Login.h"
 
 @interface AppDelegate ()
 
@@ -14,9 +16,16 @@
 
 @implementation AppDelegate
 
+- (BOOL)test
+{
+    NSLog(@"dddd");
+    return YES;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[ApiManager shareClient] LoginUser:nil withBlock:^(id data, NSError *error) {
+    }];
     return YES;
 }
 

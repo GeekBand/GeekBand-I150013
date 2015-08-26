@@ -7,13 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-typedef NS_ENUM(NSUInteger, GBHSRequestMethod)
-{
+
+/**
+ *  api接口请求方法的枚举值
+ */
+typedef NS_ENUM(NSUInteger, GBHSRequestMethod){
     GBHSRequestMethodGET = 0,
     GBHSRequestMethodPOST,
     GBHSRequestMethodPUT,
     GBHSRequestMethodDELETE
 };
+
 
 typedef void (^ScuessBlock)(id data, NSError *error);
 

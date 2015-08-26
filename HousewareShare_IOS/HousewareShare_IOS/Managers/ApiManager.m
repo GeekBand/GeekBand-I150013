@@ -9,6 +9,9 @@
 
 #import "ApiManager.h"
 #import <AFNetworking.h>
+#import <UIKit/UIKit.h>
+#import "CacheManager.h"
+#import "NSObject+Commom.h"
 
 @interface ApiManager()
 
@@ -43,7 +46,7 @@
  */
 - (instancetype)init
 {
-    return [[ApiManager alloc] initWithBaseUrl:@"http://127.0.0.1:5000"];
+    return [[ApiManager alloc] initWithBaseUrl:[NSObject baseUrlString]];
 }
 
 /**
@@ -62,8 +65,8 @@
         
         //设置请求信息
         AFJSONRequestSerializer * requestSerializer = [[AFJSONRequestSerializer alloc] init];
-        [requestSerializer  setValue:@"application/json" forKey:@"Accept"];
-        [requestSerializer  setValue:@"客户端" forKey:@"Referer"];
+//        [requestSerializer  setValue:@"application/json" forKey:@"Accept"];
+//        [requestSerializer  setValue:@"客户端" forKey:@"Referer"];
         self._manager.requestSerializer = requestSerializer;
         
         //设置响应信息
@@ -97,53 +100,71 @@
     }
     apiPath = [apiPath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    //TODO:后续添加缓存数据,请求过期,请求错误,错误日记等处理,状态栏网络请求的提示。
+    // 设置状态栏网络请求的提示,错误处理
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    ScuessBlock _tempBlock = ^(id data, NSError * error)
+    {
+        block(data, error);
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+//        if (isShowError && error) {
+//            [NSObject ShowErrorInfomation:error];
+//        }
+    };
+    
     switch (method)
     {
         case GBHSRequestMethodGET:
         {
+            // 对所有GET请求做缓存,这样可以达到离线阅读的效果.
+            NSString * cachePath = [apiPath stringByAppendingString:[parameters description]];
             [self._manager GET:apiPath
                     parameters:parameters
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                           block(responseObject, nil);
+                           NSError * error = [NSObject parseResponseWithResponseObject:responseObject isShowError:isShowError];
+                           if (error) {
+                               _tempBlock([[CacheManager shareManager] getCacheForKey:cachePath], error);
+                           }else{
+                               [[CacheManager shareManager] addCacheWithData:responseObject forKey:cachePath];
+                               _tempBlock(responseObject, nil);
+                           }
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           block(nil, nil);
+                           _tempBlock([[CacheManager shareManager] getCacheForKey:cachePath], nil);
                        }];
             break;
         }
             
         case GBHSRequestMethodPOST:
         {
-            [self._manager GET:apiPath
+            [self._manager POST:apiPath
                     parameters:parameters
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                           block(responseObject, nil);
+                           _tempBlock(responseObject, [NSObject parseResponseWithResponseObject:responseObject isShowError:isShowError]);
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           block(nil, nil);
+                           _tempBlock(nil, error);
                        }];
             break;
         }
             
         case GBHSRequestMethodPUT:
         {
-            [self._manager GET:apiPath
+            [self._manager PUT:apiPath
                     parameters:parameters
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                           block(responseObject, nil);
+                           _tempBlock(responseObject, [NSObject parseResponseWithResponseObject:responseObject isShowError:isShowError]);
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           block(nil, nil);
+                           _tempBlock(nil, error);
                        }];
             break;
         }
             
         case GBHSRequestMethodDELETE:
         {
-            [self._manager GET:apiPath
+            [self._manager DELETE:apiPath
                     parameters:parameters
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                           block(responseObject, nil);
+                           _tempBlock(responseObject, [NSObject parseResponseWithResponseObject:responseObject isShowError:isShowError]);
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           block(nil, nil);
+                           _tempBlock(nil, error);
                        }];
             break;
         }

@@ -13,4 +13,6 @@
 
 @property (nonatomic, strong) NSString * responseCode;
 @property (nonatomic, strong) NSString * responseMsg;
+
+
 @end
