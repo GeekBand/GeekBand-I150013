@@ -2,6 +2,7 @@
 from . import db
 
 
+
 class ModelUser(db.Model):
 
     __tablename__ = "model_user"

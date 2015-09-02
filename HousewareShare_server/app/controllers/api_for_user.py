@@ -3,7 +3,7 @@
 from flask import  Blueprint, jsonify, request
 from ..utility import SJ, FJ
 
-api_for_user = Blueprint("user", __name__, url_prefix="/user/")
+api_for_user = Blueprint("api_for_user", __name__, url_prefix="/api/user/")
 
 
 @api_for_user.route("/user", methods=["POST"])
