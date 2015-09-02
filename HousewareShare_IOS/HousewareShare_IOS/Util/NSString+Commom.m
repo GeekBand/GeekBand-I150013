@@ -54,4 +54,26 @@
     return sha1String;
 }
 
+
+/**
+ *  验证字符串是否为有效的邮箱
+ *
+ *  @return 验证结果
+ */
+- (BOOL)isValidMailAddress
+{
+    return true;
+}
+
+
+/**
+ *  验证是否为有效的手机号码
+ *
+ *  @return 验证结果
+ */
+- (BOOL)isValidPhoneNumber
+{
+    return true;
+}
+
 @end

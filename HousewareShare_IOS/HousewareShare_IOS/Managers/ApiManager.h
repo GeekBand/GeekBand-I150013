@@ -26,9 +26,10 @@ typedef void (^ScuessBlock)(id data, NSError *error);
 
 + (instancetype)shareClient;
 
+- (void)setRequestHeaderValue:(id)value withKey:(NSString*)key;
 - (void)requestJsonDataWithApiPath:(NSString *)apiPath
                     withParameters:(NSDictionary*)parameters
                     withMethodType:(GBHSRequestMethod)method
                        isShowError:(BOOL)isShowError
-                          andBlock:(void (^)(id data, NSError *error))block;
+                          andBlock:(ScuessBlock)block;
 @end

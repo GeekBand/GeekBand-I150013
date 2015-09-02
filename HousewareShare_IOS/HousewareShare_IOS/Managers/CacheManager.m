@@ -63,6 +63,30 @@ NSString * const kCacheDirName = @"kCacheDirName";
     return [[self cacheDirName] stringByAppendingPathComponent:fileName];
 }
 
+/**
+ *  使用UserDefault保存缓存数据
+ *
+ *  @param value 保存的数据
+ *  @param key   索引
+ */
+- (void)setUserDefaultObject:(id)value forKey:(NSString*)key
+{
+    [[NSUserDefaults standardUserDefaults] setObject:key forKey:value];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+/**
+ *  从UserDefault获取缓存数据
+ *
+ *  @param key 索引
+ *
+ *  @return 缓存的数据
+ */
+- (id)getUserDefaultObjectForKey:(NSString*)key
+{
+    return [[NSUserDefaults standardUserDefaults] valueForKey:key];
+}
+
 
 /**
  *  通过缓存目录创建缓存管理器
@@ -99,8 +123,12 @@ NSString * const kCacheDirName = @"kCacheDirName";
  *
  *  @return 是否增加成功
  */
-- (BOOL)addCacheWithData:(id)data forKey:(NSString*)key
+- (BOOL)setCacheObject:(id)data forKey:(NSString*)key
 {
+    if (!key && [key length] <= 0) {
+        return NO;
+    }
+    
     // TODO:暂时用虚拟的用户代替,后续用当前登录的用户代替
     GBHSUserModel * user = [[GBHSUserModel alloc] init];
     user.userName = @"test";
@@ -116,8 +144,12 @@ NSString * const kCacheDirName = @"kCacheDirName";
  *
  *  @return key对应的缓存数据
  */
-- (id)getCacheForKey:(NSString*)key
+- (id)getCacheObjectForKey:(NSString*)key
 {
+    if (!key && [key length] <= 0) {
+        return nil;
+    }
+    
     // TODO:暂时用虚拟的用户代替,后续用当前登录的用户代替
     GBHSUserModel * user = [[GBHSUserModel alloc] init];
     user.userName = @"test";
@@ -138,7 +170,7 @@ NSString * const kCacheDirName = @"kCacheDirName";
  *
  *  @return 是否删除缓存成功
  */
-- (BOOL)removeCacheForKey:(NSString*)key
+- (BOOL)removeCacheObjectForKey:(NSString*)key
 {
     return true;
 }

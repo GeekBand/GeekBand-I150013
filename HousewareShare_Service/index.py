@@ -1,6 +1,6 @@
 #encoding:utf-8
 
-from flask import  Flask, jsonify, request
+from flask import  Flask, jsonify, Request, request
 
 app = Flask(__name__)
 
@@ -12,7 +12,8 @@ def index():
 
 @app.route("/method/code/<int:code>/msg/<string:msg>", methods=["GET"])
 def test_get_method(code, msg):
-    return jsonify({"msg":msg, "args": request.args, "code":code})
+    print "ddd"
+    return jsonify({"msg":msg, "args": request.args, "code": 0, "test":"helloworldddd", "header": "oooo"})
 
 @app.route("/method/code/<int:code>/msg/<string:msg>", methods=["POST"])
 def test_post_method(code, msg):

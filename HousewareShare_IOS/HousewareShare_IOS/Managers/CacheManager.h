@@ -11,8 +11,12 @@
 @interface CacheManager : NSObject
 
 + (instancetype)shareManager;
-- (BOOL)addCacheWithData:(id)data forKey:(NSString*)key;
-- (id)getCacheForKey:(NSString*)key;
-- (BOOL)removeCacheForKey:(NSString*)key;
+
+- (void)setUserDefaultObject:(id)value forKey:(NSString*)key;
+- (id)getUserDefaultObjectForKey:(NSString*)key;
+
+- (BOOL)setCacheObject:(id)data forKey:(NSString*)key;
+- (id)getCacheObjectForKey:(NSString*)key;
+- (BOOL)removeCacheObjectForKey:(NSString*)key;
 - (BOOL)clear;
 @end
