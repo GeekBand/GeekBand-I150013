@@ -12,8 +12,13 @@
 @implementation ApiManager (Login)
 
 
-
-- (void)LoginUser:(GBHSUserModel*)user withBlock:(ScuessBlock)block
+/**
+ *  通过用户和验证码进行登录
+ *
+ *  @param loginuser 登录用户
+ *  @param block     登录成功回调
+ */
+- (void)doLoginWithUser:(GBHSUserModel*)loginuser withBlock:(ScuessBlock)block;
 {
     // 测试GET请求
     [self requestJsonDataWithApiPath:@"/index" withParameters:@{} withMethodType:GBHSRequestMethodGET isShowError:YES andBlock:^(id data, NSError *error) {
@@ -32,7 +37,7 @@
     
     
     // 测试Get请求的所有情况
-    [self requestJsonDataWithApiPath:@"/method/code/2/msg/scuess?w=share&m=get" withParameters:@{} withMethodType:GBHSRequestMethodGET isShowError:YES andBlock:^(id data, NSError *error) {
+    [self requestJsonDataWithApiPath:@"/method/code/2/msg/scuess" withParameters:@{@"w":@"ceshi"} withMethodType:GBHSRequestMethodGET isShowError:YES andBlock:^(id data, NSError *error) {
         if (data) {
             NSLog(@"2:GBHSRequestMethodGET 请求数据成功!");
             if ([data isKindOfClass:[NSDictionary class]]) {
@@ -79,7 +84,7 @@
     }];
     
     
-    [self requestJsonDataWithApiPath:@"/method/code/0/msg/scuess?w=share&m=delete" withParameters:@{} withMethodType:GBHSRequestMethodDELETE isShowError:YES andBlock:^(id data, NSError *error) {
+    [self requestJsonDataWithApiPath:@"/method/code/0/msg/scuess" withParameters:@{@"w":@"", @"method":@"delete"} withMethodType:GBHSRequestMethodDELETE isShowError:YES andBlock:^(id data, NSError *error) {
         NSLog(@"5:GBHSRequestMethodDELETE请求数据成功!");
         if (data) {
             if ([data isKindOfClass:[NSDictionary class]]) {
