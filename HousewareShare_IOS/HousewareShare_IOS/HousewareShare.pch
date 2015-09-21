@@ -1,0 +1,22 @@
+//
+//  HousewareShare.pch
+//  HousewareShare_IOS
+//
+//  Created by 朱文成 on 15/9/21.
+//  Copyright © 2015年 GBHS. All rights reserved.
+//
+
+#ifndef HousewareShare_pch
+#define HousewareShare_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* HousewareShare_pch */
+
+/*屏幕宽度*/
+#define WIDTH [UIScreen mainScreen].bounds.size.width
+
+/*屏幕高度*/
+#define HEIGHT [UIScreen mainScreen].bounds.size.height
+
