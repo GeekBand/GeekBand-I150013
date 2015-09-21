@@ -45,6 +45,12 @@
     self.window.rootViewController = ![LoginManager currentLoginUser] ? [self setUpMainController] : [[GBHSLoginTableViewController alloc] init];
     [self.window makeKeyAndVisible];
     
+    
+    /**
+     *  设置状态栏颜色为白色
+     */
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     return YES;
 }
 

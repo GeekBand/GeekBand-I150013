@@ -33,7 +33,33 @@
     [super viewDidLoad];
     [self setUptableView];
     
-    self.title = @"家务";
+    UIView *navigationCenterView = [[UIView alloc]init];
+    navigationCenterView.frame = CGRectMake(WIDTH/2-40, 34, 80, 25);
+    navigationCenterView.backgroundColor = [UIColor clearColor];
+    
+    UILabel *navigationCenterLabel = [[UILabel alloc]init];
+    navigationCenterLabel.frame = CGRectMake(0, 0, 80, 25);
+    navigationCenterLabel.textColor = [UIColor whiteColor];
+    navigationCenterLabel.text = @"老公家务";
+    
+    [navigationCenterView addSubview:navigationCenterLabel];
+    /**
+     设置导航栏颜色为紫色
+     */
+    [self.navigationController.navigationBar setBarTintColor:[UIColor purpleColor]];
+    
+    self.navigationItem.titleView = navigationCenterView;
+    
+ 
+    
+
+    
+    /*修改标题栏字体颜色*/
+    //  [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor,nil]];
+    //
+    
+
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
